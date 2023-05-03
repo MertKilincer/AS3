@@ -4,4 +4,9 @@ public abstract class Book {
         this.id=id;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public abstract String info();
 }
