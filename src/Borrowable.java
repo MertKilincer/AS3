@@ -1,9 +1,11 @@
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public interface Borrowable {
-    
-    LocalDateTime borrowTime = null;
-    LocalDateTime returnTime = null;
 
-    void Borrow(Library library,int id);
+    void Borrow(Member member,LocalDate date) throws BorrowingError;
+
+    String borrowInfo();
+
+    void Return(Member member,LocalDate date);
 }

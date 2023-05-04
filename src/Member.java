@@ -13,6 +13,13 @@ public abstract class Member {
         return borrowCount;
     }
 
+    public void increaseBorrowCount(){
+        this.borrowCount += 1;
+    }
+    public void decreaseBorrowCount(){
+        this.borrowCount -= 1;
+    }
+
     public String info() {
         return this.getClass().getName()+String.format("[id:%s]",this.getId());
     }

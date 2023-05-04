@@ -1,8 +1,10 @@
 public class AddMember implements Command{
 
     private Member member;
+    private Library library;
 
     public AddMember(Library library,String type) {
+        this.library=library;
         if (type.equals("A")){
             this.member=new Academic(library.getMembers().size()+1);
             library.getMembers().add(member);
@@ -13,7 +15,7 @@ public class AddMember implements Command{
     }
 
     @Override
-    public void execute(Library library) {
+    public void execute() {
         library.updateOutput("Created new member: "+member.info());
     }
 }

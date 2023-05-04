@@ -11,10 +11,16 @@ public class Main {
             String[] command=Line.split("\t");
             if(command[0].equals("addBook")){
                 Command addBook = new AddBook(library,command[1]);
-                addBook.execute(library);
+                addBook.execute();
             } else if (command[0].equals("addMember")) {
                 Command addMember = new AddMember(library,command[1]);
-                addMember.execute(library);
+                addMember.execute();
+            } else if (command[0].equals("borrowBook")){
+                Command borrowBook = new BorrowBook(library,command[1],command[2],command[3]);
+                borrowBook.execute();
+            } else if (command[0].equals("returnBook")) {
+                Command returnBook = new ReturnBook(library,command[1],command[2],command[3]);
+                returnBook.execute();
             }
         }
 
