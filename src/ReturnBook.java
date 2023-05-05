@@ -1,4 +1,4 @@
-import java.time.Duration;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -7,6 +7,7 @@ public class ReturnBook implements Command{
     private final int memberId;
     private final Library library;
     private final LocalDate returnTime;
+
 
     public ReturnBook(Library library,String bookId,String memberId,String returnTime){
         this.library=library;
@@ -20,17 +21,19 @@ public class ReturnBook implements Command{
         try{
             try{
                 Book book = library.getLibraryCollection().get(bookId-1);
-                ((Printed) book).Return(library.getMembers().get(memberId-1),returnTime);
-                Duration duration = Duration.between(((Printed) book).getBorrowTime(), returnTime);
-                long diff = Math.abs(duration.toDays());
-                ((Printed) book).resetTimes();
+                Member member = library.getMembers().get(memberId-1);
+                member.returnBook(book,returnTime);
+                if (member.getFee()>0){
+                    library.updateOutput("You must pay a penalty!");
+
+                }
                 library.updateOutput(String.format("The book [%s] was returned by member [%s] at %s Fee: %s"
-                        ,bookId,memberId,returnTime,diff));
+                        ,bookId,memberId,returnTime,member.getFee()));
             }catch (ClassCastException e){
                 throw new BorrowingError();
             }
 
-        }catch (BorrowingError e){
+        }catch (BorrowingError | ReturnError e){
             library.updateOutput(e.getMessage());
         }
     }

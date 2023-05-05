@@ -21,6 +21,8 @@ public class Main {
             } else if (command[0].equals("returnBook")) {
                 Command returnBook = new ReturnBook(library,command[1],command[2],command[3]);
                 returnBook.execute();
+            } else if (command[0].equals("extendBook")) {
+
             }
         }
 

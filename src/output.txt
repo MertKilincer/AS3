@@ -3,9 +3,19 @@ Created new book: Printed[id:2]
 Created new book: Handwritten[id:3]
 Created new book: Handwritten[id:4]
 Created new book: Printed[id:5]
+Created new book: Printed[id:6]
+Created new book: Printed[id:7]
 Created new member: Student[id:1]
-Created new member: Student[id:2]
+Created new member: Academic[id:2]
 Created new member: Academic[id:3]
 Created new member: Academic[id:4]
 The book [1] was borrowed by member [1] at 2023-04-07
-The book [2] was borrowed by member [2] at 2023-04-13
+You cannot borrow this book!
+The book [2] was borrowed by member [2] at 2023-04-07
+The book [6] was borrowed by member [2] at 2023-04-07
+The book [7] was borrowed by member [2] at 2023-04-07
+The book [1] was returned by member [1] at 2023-04-18 Fee: 4
+The book [1] was borrowed by member [2] at 2023-04-07
+The book [7] was returned by member [2] at 2023-04-25 Fee: 4
+The book [5] was borrowed by member [2] at 2023-04-13
+You cannot return this book!

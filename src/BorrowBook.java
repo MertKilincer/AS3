@@ -22,7 +22,8 @@ public class BorrowBook implements Command{
         try{
             try{
                 Book book = library.getLibraryCollection().get(bookId-1);
-                ((Printed) book).Borrow(library.getMembers().get(memberId-1),borrowTime);
+                Member member = library.getMembers().get(memberId-1);
+                member.borrowBook(book,borrowTime);
                 library.updateOutput(String.format("The book [%s] was borrowed by member [%s] at %s"
                         ,bookId,memberId,borrowTime));
         }catch (ClassCastException e){

@@ -1,5 +1,5 @@
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 public interface Borrowable {
 
@@ -7,5 +7,13 @@ public interface Borrowable {
 
     String borrowInfo();
 
-    void Return(Member member,LocalDate date);
+    LocalDate getReturnTime();
+
+    LocalDate getDeadline();
+
+    void setDeadline(LocalDate deadline);
+
+    void resetTimes();
+
+    void Return(Member member,LocalDate date) throws ReturnError;
 }

@@ -4,6 +4,8 @@ public class Printed extends Book implements Borrowable{
 
     private String type ="Printed";
     private LocalDate borrowTime = null;
+
+    private LocalDate Deadline = null;
     private LocalDate returnTime = null;
 
     private Member borrowingUser;
@@ -13,12 +15,22 @@ public class Printed extends Book implements Borrowable{
         super(id);
     }
 
-    public void setBorrowTime(LocalDate borrowTime) {
-        this.borrowTime = borrowTime;
+
+
+    public void setDeadline(LocalDate deadline) {
+        if (borrowingUser instanceof Academic){
+            this.Deadline=deadline.plusDays(Academic.timeLimit);
+        }else{
+            this.Deadline=deadline.plusDays(Student.timeLimit);
+        }
     }
 
-    public LocalDate getBorrowTime() {
-        return borrowTime;
+    public LocalDate getDeadline() {
+        return Deadline;
+    }
+
+    public LocalDate getReturnTime() {
+        return returnTime;
     }
 
     public String info(){
@@ -29,13 +41,17 @@ public class Printed extends Book implements Borrowable{
 
     @Override
     public void Borrow(Member member, LocalDate date) throws BorrowingError {
-        if ((member instanceof Academic && member.getBorrowCount() <= 4) ||
-                (member instanceof Student && member.getBorrowCount() <= 2)) {
+        if (super.getStatus().equals("Available")){
+        if ((member instanceof Academic && member.getBorrowCount() <4) ||
+                (member instanceof Student && member.getBorrowCount() <2)) {
             this.setStatus("borrowed");
-            this.setBorrowTime(date);
             this.borrowingUser = member;
+            this.setDeadline(date);
             this.borrowingUser.increaseBorrowCount();
         } else {
+            throw new BorrowingError();
+        }
+    }else{
             throw new BorrowingError();
         }
     }
@@ -45,11 +61,14 @@ public class Printed extends Book implements Borrowable{
                 super.getId(),this.borrowingUser.getId(),this.borrowTime);
     }
     @Override
-    public void Return(Member member,LocalDate date) {
-        if (this.getStatus().equals("borrowed")){
+    public void Return(Member member,LocalDate date) throws ReturnError {
+        if (this.getStatus().equals("borrowed")&&this.borrowingUser.equals(member)){
             this.setStatus("Available");
+            this.returnTime=date;
             borrowingUser.decreaseBorrowCount();
             this.borrowingUser= null;
+        }else {
+            throw new ReturnError();
         }
     }
     public void resetTimes(){
