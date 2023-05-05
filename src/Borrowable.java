@@ -11,6 +11,8 @@ public interface Borrowable {
 
     LocalDate getDeadline();
 
+    Member getBorrowingUser();
+
     void setDeadline(LocalDate deadline);
 
     void resetTimes();

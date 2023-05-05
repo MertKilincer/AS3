@@ -15,16 +15,16 @@ public class AddBook implements Command{
     public AddBook(Library library, String type) {
         this.library=library;
         if (type.equals("H")){
-            this.setBook(new Handwritten(library.getLibraryCollection().size()+1));
-            library.getHandwrittenList().add(this.getBook());
+            setBook(new Handwritten(getLibrary().getLibraryCollection().size()+1));
+            getLibrary().getHandwrittenList().add(getBook());
         }else if(type.equals("P")){
-            this.setBook(new Printed(library.getLibraryCollection().size()+1));
-            library.getPrintedList().add(this.getBook());
+            setBook(new Printed(getLibrary().getLibraryCollection().size()+1));
+            getLibrary().getPrintedList().add(getBook());
         }
     }
     public void execute() {
-        this.getLibrary().getLibraryCollection().add(this.getBook());
-        this.getLibrary().updateOutput("Created new book: "+this.getBook().info());
+        getLibrary().getLibraryCollection().add(getBook());
+        getLibrary().updateOutput("Created new book: "+getBook().info());
     }
 }
 

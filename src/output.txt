@@ -9,10 +9,10 @@ Created new member: Academic[id:1]
 Created new member: Academic[id:1]
 The book [1] was borrowed by member [1] at 2023-04-07
 You cannot read this book!
-The deadline of book [1] was extended by member [1] at 2023-04-14
-New deadline of book [1] is 2023-04-21
 You cannot extend the deadline!
-The book [1] was returned by member [1] at 2023-04-18 Fee: 0
+You cannot extend the deadline!
+You must pay a penalty!
+The book [1] was returned by member [1] at 2023-04-18 Fee: 4
 History of library:
 Number of the students: 2
 Student[id:1]

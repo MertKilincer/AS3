@@ -7,7 +7,23 @@ public class ReadInLibrary implements Command{
     private final Library library;
     private final LocalDate readTime;
 
-    public ReadInLibrary(Library library,String bookId,String memberId,String readTime){
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public LocalDate getReadTime() {
+        return readTime;
+    }
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public ReadInLibrary(Library library, String bookId, String memberId, String readTime){
         this.library=library;
         this.bookId= Integer.parseInt(bookId);
         this.memberId= Integer.parseInt(memberId);
@@ -19,18 +35,18 @@ public class ReadInLibrary implements Command{
     @Override
     public void execute() {
         try {
-        Book book = library.getLibraryCollection().get(bookId-1);
+        Book book = getLibrary().getLibraryCollection().get(getBookId()-1);
         if (book.getStatus().equals("Available")){
-        Member member = library.getMembers().get(memberId-1);
-        member.readBook(book,readTime);
-        library.getReadInList().add(book);
-        library.updateOutput(String.format("The book [%s] was read in library by member [%s] at %s"
-                ,bookId,memberId,readTime));
+        Member member = getLibrary().getMembers().get(getMemberId()-1);
+        member.readBook(book,getReadTime());
+        getLibrary().getReadInList().add(book);
+        getLibrary().updateOutput(String.format("The book [%s] was read in library by member [%s] at %s"
+                ,getBookId(),getMemberId(),getReadTime()));
         }else {
             throw new ReadError();
         }
     }catch (AccessError | ReadError e){
-            library.updateOutput(e.getMessage());
+            getLibrary().updateOutput(e.getMessage());
         }
     }
 }

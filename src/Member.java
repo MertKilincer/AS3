@@ -2,7 +2,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public abstract class Member {
-    private int id;
+    private final int id;
     private int borrowCount;
     protected int fee;
 

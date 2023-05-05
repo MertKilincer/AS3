@@ -3,10 +3,27 @@ import java.time.format.DateTimeFormatter;
 
 public class ExtendBook implements Command{
     private final int bookId;
-    private final int memberId;//error must be implemented
+    private final int memberId;
     private final Library library;
     private final LocalDate currentTime;//check conditions
-    public ExtendBook(Library library,String bookId,String memberId,String currentDate){
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public int getMemberId() {
+        return memberId;
+    }
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public LocalDate getCurrentTime() {
+        return currentTime;
+    }
+
+    public ExtendBook(Library library, String bookId, String memberId, String currentDate){
         this.library=library;
         this.bookId= Integer.parseInt(bookId);
         this.memberId= Integer.parseInt(memberId);
@@ -16,11 +33,16 @@ public class ExtendBook implements Command{
     @Override
     public void execute() {
         try {
-        Borrowable book = (Borrowable) library.getLibraryCollection().get(bookId-1);
-        book.extend(library);
-        library.updateOutput(String.format("New deadline of book [%s] is %s",bookId,book.getDeadline()));
+        Borrowable book = (Borrowable) this.getLibrary().getLibraryCollection().get(this.getBookId()-1);
+        if (book.getBorrowingUser().equals(this.getLibrary().getMembers().get(this.getMemberId()))){
+            book.extend(this.getLibrary());
+            this.getLibrary().updateOutput(String.format("New deadline of book [%s] is %s",
+                    this.getBookId(),book.getDeadline()));
+        }else {
+            throw new ExtendError();
+        }
     }catch (ExtendError e){
-            library.updateOutput(e.getMessage());
+            this.getLibrary().updateOutput(e.getMessage());
         }
     }
 }

@@ -25,7 +25,7 @@ public class Library {
         return String.join("\n",systemOutput);
     }
     public void updateOutput(String newExecution){
-        this.systemOutput.add(newExecution);
+        systemOutput.add(newExecution);
     }
 
     public ArrayList<Book> getPrintedList() {

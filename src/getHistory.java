@@ -2,8 +2,11 @@
 
 public class getHistory implements Command{
 
-    private Library library;
+    private final Library library;
 
+    public Library getLibrary() {
+        return library;
+    }
 
     public getHistory(Library library){
         this.library=library;
@@ -11,31 +14,31 @@ public class getHistory implements Command{
 
     @Override
     public void execute() {
-        library.updateOutput("History of library:\n"+
-                "Number of the students: " +library.getStudentList().size());
-        for (Member student: library.getStudentList()){
-            library.updateOutput(student.info());
+        this.getLibrary().updateOutput("History of library:\n"+
+                "Number of the students: " +getLibrary().getStudentList().size());
+        for (Member student: getLibrary().getStudentList()){
+            getLibrary().updateOutput(student.info());
         }
-        library.updateOutput("\nNumber of the academics: " +library.getAcademicList().size());
-        for (Member academic:library.getAcademicList()){
-            library.updateOutput(academic.info());
+        getLibrary().updateOutput("\nNumber of the academics: " +getLibrary().getAcademicList().size());
+        for (Member academic:getLibrary().getAcademicList()){
+            getLibrary().updateOutput(academic.info());
         }
-        library.updateOutput("\nNumber of printed books: "+library.getPrintedList().size());
-        for (Book printed:library.getPrintedList()){
-            library.updateOutput(printed.info());
+        getLibrary().updateOutput("\nNumber of printed books: "+getLibrary().getPrintedList().size());
+        for (Book printed:getLibrary().getPrintedList()){
+            getLibrary().updateOutput(printed.info());
         }
-        library.updateOutput(  "\nNumber of handwritten books: "+library.getHandwrittenList().size());
-        for (Book handwritten:library.getHandwrittenList()){
-            library.updateOutput(handwritten.info());
+        getLibrary().updateOutput(  "\nNumber of handwritten books: "+getLibrary().getHandwrittenList().size());
+        for (Book handwritten:getLibrary().getHandwrittenList()){
+            getLibrary().updateOutput(handwritten.info());
         }
-        library.updateOutput("\nNumber of borrowed books: "+library.getBorrowedList().size());
-        for (Book borrowed: library.getBorrowedList()){
+        getLibrary().updateOutput("\nNumber of borrowed books: "+getLibrary().getBorrowedList().size());
+        for (Book borrowed: getLibrary().getBorrowedList()){
             Borrowable book= (Borrowable) borrowed;
-            library.updateOutput(book.borrowInfo());
+            getLibrary().updateOutput(book.borrowInfo());
         }
-        library.updateOutput("\nNumber of books read in library: "+library.getReadInList().size());
-        for (Book book: library.getReadInList()){
-            library.updateOutput(book.readInfo());
+        getLibrary().updateOutput("\nNumber of books read in library: "+getLibrary().getReadInList().size());
+        for (Book book: getLibrary().getReadInList()){
+            getLibrary().updateOutput(book.readInfo());
         }
     }
 }
