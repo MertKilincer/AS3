@@ -28,6 +28,8 @@ public class ReturnBook implements Command{
                     if (member.getFee() > 0) {
                         library.updateOutput("You must pay a penalty!");
                     }
+                    library.getBorrowedList().remove(book);
+                    library.getReadInList().remove(book);
                     library.updateOutput(String.format("The book [%s] was returned by member [%s] at %s Fee: %s"
                             , bookId, memberId, returnTime, member.getFee()));
 

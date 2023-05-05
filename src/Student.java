@@ -13,6 +13,7 @@ public class Student extends Member{
         try {
             Printed printedBook = (Printed) book;
             printedBook.readIn(readTime);
+            book.reader=this;
 
 
         }catch (ClassCastException e){

@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public interface Borrowable {
 
-    void Borrow(Member member,LocalDate date) throws BorrowingError;
+    void Borrow(Member member,LocalDate date) throws BorrowingError, BorrowExceedError;
 
     String borrowInfo();
 

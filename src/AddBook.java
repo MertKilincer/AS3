@@ -6,8 +6,10 @@ public class AddBook implements Command{
         this.library=library;
         if (type.equals("H")){
             this.book=new Handwritten(library.getLibraryCollection().size()+1);
+            library.getHandwrittenList().add(book);
         }else if(type.equals("P")){
             this.book=new Printed(library.getLibraryCollection().size()+1);
+            library.getPrintedList().add(book);
         }
     }
     public void execute() {

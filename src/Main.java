@@ -6,30 +6,38 @@ public class Main {
     public static void main(String[] args) {
         String [] inputs =ReadInputFile.readFile(args[0]);
         Library library = new Library();
-        displayInput(inputs);
+        //displayInput(inputs);
         for (String Line : inputs){
             String[] command=Line.split("\t");
-            if(command[0].equals("addBook")){
-                Command addBook = new AddBook(library,command[1]);
-                addBook.execute();
-            } else if (command[0].equals("addMember")) {
-                Command addMember = new AddMember(library,command[1]);
-                addMember.execute();
-            } else if (command[0].equals("borrowBook")){
-                Command borrowBook = new BorrowBook(library,command[1],command[2],command[3]);
-                borrowBook.execute();
-            } else if (command[0].equals("returnBook")) {
-                Command returnBook = new ReturnBook(library,command[1],command[2],command[3]);
-                returnBook.execute();
-            } else if (command[0].equals("extendBook")) {
-                Command extend = new ExtendBook(library,command[1],command[2],command[3]);
-                extend.execute();
-            } else if (command [0].equals("readInLibrary")) {
-                Command readIn = new ReadInLibrary(library,command[1],command[2],command[3]);
-                readIn.execute();
-            } else if (command [0].equals("getTheHistory")) {
-                Command history = new getHistory(library);
-                history.execute();
+            switch (command[0]) {
+                case "addBook":
+                    Command addBook = new AddBook(library, command[1]);
+                    addBook.execute();
+                    break;
+                case "addMember":
+                    Command addMember = new AddMember(library, command[1]);
+                    addMember.execute();
+                    break;
+                case "borrowBook":
+                    Command borrowBook = new BorrowBook(library, command[1], command[2], command[3]);
+                    borrowBook.execute();
+                    break;
+                case "returnBook":
+                    Command returnBook = new ReturnBook(library, command[1], command[2], command[3]);
+                    returnBook.execute();
+                    break;
+                case "extendBook":
+                    Command extend = new ExtendBook(library, command[1], command[2], command[3]);
+                    extend.execute();
+                    break;
+                case "readInLibrary":
+                    Command readIn = new ReadInLibrary(library, command[1], command[2], command[3]);
+                    readIn.execute();
+                    break;
+                case "getTheHistory":
+                    Command history = new getHistory(library);
+                    history.execute();
+                    break;
             }
         }
 

@@ -4,6 +4,9 @@ public abstract class Book {
     private int id;
     private String status="Available";
 
+    protected Member reader;
+    protected LocalDate returnTime = null;
+
     public Book(int id){
         this.id=id;
     }
@@ -17,6 +20,11 @@ public abstract class Book {
     public void setStatus(String status){
         this.status=status;
     }
+
+    public abstract String readInfo();
+
+
+
 
     public abstract String info();
 

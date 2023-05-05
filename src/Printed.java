@@ -5,17 +5,24 @@ public class Printed extends Book implements Borrowable{
     private String type ="Printed";
     private LocalDate borrowTime = null;
     private LocalDate Deadline = null;
-    private LocalDate returnTime = null;
     private Member borrowingUser;
+
     private boolean extendable = false;
 
     public Printed(int id) {
         super(id);
     }
 
+    @Override
+    public String readInfo() {
+            return String.format("The Book [%s] was read in library by member [%s] at %s",
+                    super.getId(),super.reader.getId(),super.returnTime);
+    }
+
 
 
     public void setDeadline(LocalDate deadline) {
+        this.borrowTime=deadline;
         if (borrowingUser instanceof Academic){
             this.Deadline=deadline.plusDays(Academic.timeLimit);
         }else{
@@ -45,16 +52,15 @@ public class Printed extends Book implements Borrowable{
 
 
     @Override
-    public void Borrow(Member member, LocalDate date) throws BorrowingError {
+    public void Borrow(Member member, LocalDate date) throws BorrowingError, BorrowExceedError {
         if (super.getStatus().equals("Available")){
-        if ((member instanceof Academic && member.getBorrowCount() <4) ||
-                (member instanceof Student && member.getBorrowCount() <2)) {
+            if (member.checkLimit()){
             this.setStatus("borrowed");
             this.borrowingUser = member;
             this.setDeadline(date);
             this.borrowingUser.increaseBorrowCount();
         } else {
-            throw new BorrowingError();
+            throw new BorrowExceedError();
         }
     }else{
             throw new BorrowingError();
@@ -68,7 +74,7 @@ public class Printed extends Book implements Borrowable{
     @Override
     public void Return(Member member,LocalDate date) throws ReturnError {
         if (this.getStatus().equals("borrowed")&&this.borrowingUser.equals(member)){
-            this.returnTime=date;
+            super.returnTime=date;
             borrowingUser.decreaseBorrowCount();
             this.borrowingUser= null;
         }else {

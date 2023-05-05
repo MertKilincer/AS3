@@ -32,6 +32,16 @@ public abstract class Member {
         this.fee=fee;
     }
 
+    public boolean checkLimit(){
+        if (this instanceof Academic && this.getBorrowCount() <4){
+            return true;
+        } else if (this instanceof Student && this.getBorrowCount() <2) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public void returnBook(Book book, LocalDate returnTime) throws ReturnError {
         Borrowable borrowed =(Borrowable) book ;
         borrowed.Return(this,returnTime);
@@ -45,7 +55,7 @@ public abstract class Member {
 
 
     }
-    public void borrowBook(Book book,LocalDate borrowTime) throws BorrowingError {
+    public void borrowBook(Book book,LocalDate borrowTime) throws BorrowingError, BorrowExceedError {
         Printed wantedBook =(Printed) book ;
         wantedBook.Borrow(this,borrowTime);
     }

@@ -14,5 +14,6 @@ public class Academic extends Member {
     @Override
     public void readBook(Book book, LocalDate readTime) {
         book.readIn(readTime);
+        book.reader=this;
     }
 }

@@ -23,6 +23,7 @@ public class ReadInLibrary implements Command{
         if (book.getStatus().equals("Available")){
         Member member = library.getMembers().get(memberId-1);
         member.readBook(book,readTime);
+        library.getReadInList().add(book);
         library.updateOutput(String.format("The book [%s] was read in library by member [%s] at %s"
                 ,bookId,memberId,readTime));
         }else {
