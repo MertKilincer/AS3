@@ -21,10 +21,23 @@ public abstract class Book {
         this.status=status;
     }
 
+    public Member getReader() {
+        return reader;
+    }
+
+    public void setReader(Member reader) {
+        this.reader = reader;
+    }
+
+    public LocalDate getReturnTime() {
+        return returnTime;
+    }
+
+    public void setReturnTime(LocalDate returnTime) {
+        this.returnTime = returnTime;
+    }
+
     public abstract String readInfo();
-
-
-
 
     public abstract String info();
 

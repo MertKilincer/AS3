@@ -19,8 +19,6 @@ public class Printed extends Book implements Borrowable{
                     super.getId(),super.reader.getId(),super.returnTime);
     }
 
-
-
     public void setDeadline(LocalDate deadline) {
         this.borrowTime=deadline;
         if (borrowingUser instanceof Academic){
@@ -33,9 +31,16 @@ public class Printed extends Book implements Borrowable{
     public LocalDate getDeadline() {
         return Deadline;
     }
-
     public LocalDate getReturnTime() {
         return returnTime;
+    }
+
+    public LocalDate getBorrowTime() {
+        return borrowTime;
+    }
+
+    public void setBorrowTime(LocalDate borrowTime) {
+        this.borrowTime = borrowTime;
     }
 
     public boolean getExtendable(){
@@ -44,21 +49,27 @@ public class Printed extends Book implements Borrowable{
     public void setExtendable(boolean extendable) {
         this.extendable = extendable;
     }
-
-    public String info(){
-        return this.type+ String.format("[id:%s]",super.getId() );
+    public void setBorrowingUser(Member borrowingUser) {
+        this.borrowingUser = borrowingUser;
+    }
+    public Member getBorrowingUser() {
+        return borrowingUser;
     }
 
 
+
+    public String info(){
+        return this.getClass().getName()+ String.format("[id:%s]",super.getId() );
+    }
 
     @Override
     public void Borrow(Member member, LocalDate date) throws BorrowingError, BorrowExceedError {
         if (super.getStatus().equals("Available")){
             if (member.checkLimit()){
             this.setStatus("borrowed");
-            this.borrowingUser = member;
+            this.setBorrowingUser(member);
             this.setDeadline(date);
-            this.borrowingUser.increaseBorrowCount();
+            this.getBorrowingUser().increaseBorrowCount();
         } else {
             throw new BorrowExceedError();
         }
@@ -69,27 +80,27 @@ public class Printed extends Book implements Borrowable{
     @Override
     public String borrowInfo(){
         return String.format("The Book [%s] was borrowed by member [%s] at %s",
-                super.getId(),this.borrowingUser.getId(),this.borrowTime);
+                super.getId(),this.getBorrowingUser().getId(),this.getBorrowTime());
     }
     @Override
     public void Return(Member member,LocalDate date) throws ReturnError {
-        if (this.getStatus().equals("borrowed")&&this.borrowingUser.equals(member)){
-            super.returnTime=date;
-            borrowingUser.decreaseBorrowCount();
-            this.borrowingUser= null;
+        if (this.getStatus().equals("borrowed")&&this.getBorrowingUser().equals(member)){
+            super.setReturnTime(date);
+            this.getBorrowingUser().decreaseBorrowCount();
+            this.setBorrowingUser(null);
         }else {
             throw new ReturnError();
         }
     }
     public void resetTimes(){
-        this.borrowTime =null;
-        this.returnTime = null;
+        this.setReturnTime(null);
+        this.setBorrowTime(null);
     }
 
     public void extend(Library library) throws ExtendError {
         if (!this.getExtendable()){
             library.updateOutput(String.format("The deadline of book [%s] was extended by member [%s] at %s"
-                    ,super.getId(),this.borrowingUser.getId(),this.getDeadline()));
+                    ,super.getId(),this.getBorrowingUser().getId(),this.getDeadline()));
             this.setDeadline(this.getDeadline());
             this.setExtendable(true);
         }else {
@@ -100,7 +111,7 @@ public class Printed extends Book implements Borrowable{
     public void readIn(LocalDate readDate){
         if (this.getStatus().equals("Available")){
             this.setStatus("Read In");
-            this.returnTime=readDate;
+            this.setReturnTime(readDate);
         }
     }
 

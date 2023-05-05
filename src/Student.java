@@ -2,7 +2,7 @@ import java.time.LocalDate;
 
 public class Student extends Member{
 
-    public static boolean Access = false;
+
     public static final int timeLimit= 7;
     public Student(int id) {
         super(id);
@@ -13,7 +13,7 @@ public class Student extends Member{
         try {
             Printed printedBook = (Printed) book;
             printedBook.readIn(readTime);
-            book.reader=this;
+            book.setReader(this);
 
 
         }catch (ClassCastException e){
