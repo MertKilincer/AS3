@@ -2,7 +2,6 @@ import java.time.LocalDate;
 
 public class Printed extends Book implements Borrowable{
 
-    private String type ="Printed";
     private LocalDate borrowTime = null;
     private LocalDate Deadline = null;
     private Member borrowingUser;

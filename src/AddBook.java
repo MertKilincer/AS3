@@ -2,19 +2,29 @@ public class AddBook implements Command{
     private Book book;
     private final Library library;
 
-    public AddBook(Library library,String type) {
+    public Book getBook() {
+        return book;
+    }
+    public void setBook(Book book) {
+        this.book = book;
+    }
+    public Library getLibrary() {
+        return library;
+    }
+
+    public AddBook(Library library, String type) {
         this.library=library;
         if (type.equals("H")){
-            this.book=new Handwritten(library.getLibraryCollection().size()+1);
-            library.getHandwrittenList().add(book);
+            this.setBook(new Handwritten(library.getLibraryCollection().size()+1));
+            library.getHandwrittenList().add(this.getBook());
         }else if(type.equals("P")){
-            this.book=new Printed(library.getLibraryCollection().size()+1);
-            library.getPrintedList().add(book);
+            this.setBook(new Printed(library.getLibraryCollection().size()+1));
+            library.getPrintedList().add(this.getBook());
         }
     }
     public void execute() {
-        library.getLibraryCollection().add(book);
-        library.updateOutput("Created new book: "+book.info());
+        this.getLibrary().getLibraryCollection().add(this.getBook());
+        this.getLibrary().updateOutput("Created new book: "+this.getBook().info());
     }
 }
 

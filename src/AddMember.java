@@ -3,7 +3,19 @@ public class AddMember implements Command{
     private Member member;
     private final Library library;
 
-    public AddMember(Library library,String type) {
+    public Member getMember() {
+        return member;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    public Library getLibrary() {
+        return library;
+    }
+
+    public AddMember(Library library, String type) {
         this.library=library;
         if (type.equals("A")){
             this.member=new Academic(library.getMembers().size()+1);

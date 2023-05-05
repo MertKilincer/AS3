@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
 public abstract class Book {
-    private int id;
+    private final int id;
     private String status="Available";
 
     protected Member reader;
