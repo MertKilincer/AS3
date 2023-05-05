@@ -22,10 +22,14 @@ public class BorrowBook implements Command{
         try{
             try{
                 Book book = library.getLibraryCollection().get(bookId-1);
+                if (book.getStatus().equals("Available")){
                 Member member = library.getMembers().get(memberId-1);
                 member.borrowBook(book,borrowTime);
                 library.updateOutput(String.format("The book [%s] was borrowed by member [%s] at %s"
                         ,bookId,memberId,borrowTime));
+                }else {
+                    throw new BorrowingError();
+                }
         }catch (ClassCastException e){
             throw new BorrowingError();
         }

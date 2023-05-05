@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public abstract class Book {
     private int id;
     private String status="Available";
@@ -17,4 +19,6 @@ public abstract class Book {
     }
 
     public abstract String info();
+
+    public abstract void readIn(LocalDate readDate);
 }

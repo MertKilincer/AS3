@@ -15,6 +15,13 @@ public class ExtendBook implements Command{
     }
     @Override
     public void execute() {
-
+        try {
+        Borrowable book = (Borrowable) library.getLibraryCollection().get(bookId-1);
+        Member member = library.getMembers().get(memberId-1);
+        book.extend(library);
+        library.updateOutput(String.format("New deadline of book [%s] is %s",bookId,book.getDeadline()));
+    }catch (ExtendError e){
+            library.updateOutput(e.getMessage());
+        }
     }
 }

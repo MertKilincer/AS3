@@ -16,4 +16,6 @@ public interface Borrowable {
     void resetTimes();
 
     void Return(Member member,LocalDate date) throws ReturnError;
+
+    void extend(Library library) throws ExtendError;
 }

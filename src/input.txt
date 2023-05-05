@@ -3,20 +3,17 @@ addBook	P
 addBook	H
 addBook	H
 addBook	P
-addBook	P
-addBook	P
+addMember	S
 addMember	S
 addMember	A
 addMember	A
-addMember	A
 borrowBook	1	1	2023-04-07
-borrowBook	1	2	2023-04-07
-borrowBook	2	2	2023-04-07
-borrowBook	6	2	2023-04-07
-borrowBook	7	2	2023-04-07
-returnBook	1	1	2023-04-18
-borrowBook	1	2	2023-04-07
-returnBook	7	2	2023-04-25
-borrowBook	5	2	2023-04-13
-returnBook	5	1	2023-04-28
+readInLibrary	1	2	2023-04-07
+returnBook	1	1	2023-04-15
+readInLibrary	4	1	2023-04-15
+addBook	P
+borrowBook	2	2	2023-04-15
+borrowBook	6	2	2023-04-15
+borrowBook	1	2	2023-04-15
+readInLibrary	3	3	2023-04-15
 getTheHistory

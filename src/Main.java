@@ -22,7 +22,14 @@ public class Main {
                 Command returnBook = new ReturnBook(library,command[1],command[2],command[3]);
                 returnBook.execute();
             } else if (command[0].equals("extendBook")) {
-
+                Command extend = new ExtendBook(library,command[1],command[2],command[3]);
+                extend.execute();
+            } else if (command [0].equals("readInLibrary")) {
+                Command readIn = new ReadInLibrary(library,command[1],command[2],command[3]);
+                readIn.execute();
+            } else if (command [0].equals("getTheHistory")) {
+                Command history = new getHistory(library);
+                history.execute();
             }
         }
 

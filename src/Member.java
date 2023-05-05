@@ -49,6 +49,7 @@ public abstract class Member {
         Printed wantedBook =(Printed) book ;
         wantedBook.Borrow(this,borrowTime);
     }
+    public abstract void readBook(Book book,LocalDate readTime) throws AccessError;
     public String info() {
         return this.getClass().getName()+String.format("[id:%s]",this.getId());
     }

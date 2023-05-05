@@ -23,17 +23,23 @@ public class ReturnBook implements Command{
                 Book book = library.getLibraryCollection().get(bookId-1);
                 Member member = library.getMembers().get(memberId-1);
                 member.returnBook(book,returnTime);
-                if (member.getFee()>0){
-                    library.updateOutput("You must pay a penalty!");
+                if (!book.getStatus().equals("Available")) {
+                    book.setStatus("Available");
+                    if (member.getFee() > 0) {
+                        library.updateOutput("You must pay a penalty!");
+                    }
+                    library.updateOutput(String.format("The book [%s] was returned by member [%s] at %s Fee: %s"
+                            , bookId, memberId, returnTime, member.getFee()));
 
+                }else {
+                    throw new ReturnError();
                 }
-                library.updateOutput(String.format("The book [%s] was returned by member [%s] at %s Fee: %s"
-                        ,bookId,memberId,returnTime,member.getFee()));
             }catch (ClassCastException e){
-                throw new BorrowingError();
+                throw new ReturnError();
             }
 
-        }catch (BorrowingError | ReturnError e){
+
+        }catch (ReturnError e){
             library.updateOutput(e.getMessage());
         }
     }
