@@ -13,9 +13,9 @@ public class Handwritten extends Book {
     }
 
     public void readIn(LocalDate readDate){
-        if (this.getStatus().equals("Available")){
-            this.setStatus("Read In");
-            super.setBorrowTime(readDate);
+        if (getStatus().equals("Available")){
+            setStatus("Read In");
+            setBorrowTime(readDate);
         }
     }
     public String info(){
