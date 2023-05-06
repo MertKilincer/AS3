@@ -34,13 +34,18 @@ public class ExtendBook implements Command{
     public void execute() {
         try {
         Book book = getLibrary().getLibraryCollection().get(getBookId()-1);
+        if (book.getBorrowTime() == null){
+            throw new ExtendError();
+        }else {
+
         if (book.getBorrowingUser().equals(getLibrary().getMembers().get(getMemberId()-1))&&
-                getCurrentTime().isBefore(((Borrowable)getLibrary().getLibraryCollection().get(getBookId()-1)).getDeadline())){
+                (!getCurrentTime().isAfter(((Borrowable)getLibrary().getLibraryCollection().get(getBookId()-1)).getDeadline()))){
             ((Borrowable) book).extend(getLibrary());
             this.getLibrary().updateOutput(String.format("New deadline of book [%s] is %s",
                     getBookId(),((Borrowable)book).getDeadline()));
         }else {
             throw new ExtendError();
+        }
         }
     }catch (ExtendError e){
             getLibrary().updateOutput(e.getMessage());

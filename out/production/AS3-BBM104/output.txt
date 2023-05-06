@@ -1,184 +1,18 @@
 Created new book: Printed[id:1]
 Created new book: Printed[id:2]
-Created new book: Printed[id:3]
-Created new book: Printed[id:4]
+Created new book: Handwritten[id:3]
+Created new book: Handwritten[id:4]
 Created new book: Printed[id:5]
-Created new book: Printed[id:6]
-Created new book: Printed[id:7]
-Created new book: Printed[id:8]
-Created new book: Printed[id:9]
-Created new book: Printed[id:10]
-Created new book: Handwritten[id:11]
-Created new book: Handwritten[id:12]
-Created new book: Handwritten[id:13]
-Created new book: Handwritten[id:14]
-Created new book: Handwritten[id:15]
-Created new book: Handwritten[id:16]
-Created new book: Handwritten[id:17]
-Created new book: Handwritten[id:18]
-Created new book: Handwritten[id:19]
-Created new book: Handwritten[id:20]
 Created new member: Student[id:1]
 Created new member: Student[id:2]
 Created new member: Academic[id:3]
 Created new member: Academic[id:4]
-The book [1] was borrowed by member [1] at 2023-04-01
-The book [2] was borrowed by member [1] at 2023-04-01
-You have exceeded the borrowing limit!
-The book [3] was borrowed by member [2] at 2023-04-01
-You cannot return this book!
-You must pay a penalty!
-The book [3] was returned by member [2] at 2023-04-09 Fee: 1
-The book [2] was returned by member [1] at 2023-04-05 Fee: 0
-History of library:
-
-Number of the students: 2
-Student[id:1]
-Student[id:2]
-
-Number of the academics: 2
-Academic[id:3]
-Academic[id:4]
-
-Number of printed books: 10
-Printed[id:1]
-Printed[id:2]
-Printed[id:3]
-Printed[id:4]
-Printed[id:5]
-Printed[id:6]
-Printed[id:7]
-Printed[id:8]
-Printed[id:9]
-Printed[id:10]
-
-Number of handwritten books: 10
-Handwritten[id:11]
-Handwritten[id:12]
-Handwritten[id:13]
-Handwritten[id:14]
-Handwritten[id:15]
-Handwritten[id:16]
-Handwritten[id:17]
-Handwritten[id:18]
-Handwritten[id:19]
-Handwritten[id:20]
-
-Number of borrowed books: 1
-The Book [1] was borrowed by member [1] at 2023-04-01
-
-Number of books read in library: 0
-The book [4] was borrowed by member [3] at 2023-04-01
-The book [5] was borrowed by member [3] at 2023-04-01
-The book [6] was borrowed by member [3] at 2023-04-01
-The book [7] was borrowed by member [3] at 2023-04-01
-You have exceeded the borrowing limit!
-The book [9] was borrowed by member [4] at 2023-04-01
-The book [10] was borrowed by member [4] at 2023-04-01
-You cannot borrow this book!
-You cannot return the book when you have not borrowed yet!
-The book [7] was returned by member [3] at 2023-04-10 Fee: 0
-You cannot return this book!
-You must pay a penalty!
-The book [9] was returned by member [4] at 2023-04-25 Fee: 10
-You must pay a penalty!
-The book [10] was returned by member [4] at 2023-04-16 Fee: 1
-History of library:
-
-Number of the students: 2
-Student[id:1]
-Student[id:2]
-
-Number of the academics: 2
-Academic[id:3]
-Academic[id:4]
-
-Number of printed books: 10
-Printed[id:1]
-Printed[id:2]
-Printed[id:3]
-Printed[id:4]
-Printed[id:5]
-Printed[id:6]
-Printed[id:7]
-Printed[id:8]
-Printed[id:9]
-Printed[id:10]
-
-Number of handwritten books: 10
-Handwritten[id:11]
-Handwritten[id:12]
-Handwritten[id:13]
-Handwritten[id:14]
-Handwritten[id:15]
-Handwritten[id:16]
-Handwritten[id:17]
-Handwritten[id:18]
-Handwritten[id:19]
-Handwritten[id:20]
-
-Number of borrowed books: 4
-The Book [1] was borrowed by member [1] at 2023-04-01
-The Book [4] was borrowed by member [3] at 2023-04-01
-The Book [5] was borrowed by member [3] at 2023-04-01
-The Book [6] was borrowed by member [3] at 2023-04-01
-
-Number of books read in library: 0
-Students can not read handwritten books!
-The book [13] was read in library by member [4] at 2023-04-01
-The book [15] was read in library by member [4] at 2023-04-01
-The book [8] was read in library by member [4] at 2023-04-01
-The book [9] was read in library by member [4] at 2023-04-01
-Students can not read handwritten books!
-The book [15] was returned by member [4] at 2023-04-01 Fee: 0
-The book [8] was returned by member [4] at 2023-04-25 Fee: 0
-History of library:
-
-Number of the students: 2
-Student[id:1]
-Student[id:2]
-
-Number of the academics: 2
-Academic[id:3]
-Academic[id:4]
-
-Number of printed books: 10
-Printed[id:1]
-Printed[id:2]
-Printed[id:3]
-Printed[id:4]
-Printed[id:5]
-Printed[id:6]
-Printed[id:7]
-Printed[id:8]
-Printed[id:9]
-Printed[id:10]
-
-Number of handwritten books: 10
-Handwritten[id:11]
-Handwritten[id:12]
-Handwritten[id:13]
-Handwritten[id:14]
-Handwritten[id:15]
-Handwritten[id:16]
-Handwritten[id:17]
-Handwritten[id:18]
-Handwritten[id:19]
-Handwritten[id:20]
-
-Number of borrowed books: 4
-The Book [1] was borrowed by member [1] at 2023-04-01
-The Book [4] was borrowed by member [3] at 2023-04-01
-The Book [5] was borrowed by member [3] at 2023-04-01
-The Book [6] was borrowed by member [3] at 2023-04-01
-
-Number of books read in library: 2
-The Book [13] was read in library by member [4] at 2023-04-01
-The Book [9] was read in library by member [4] at 2023-04-01
-The deadline of book [6] was extended by member [3] at 2023-04-15
-New deadline of book [6] is 2023-04-29
-The book [6] was returned by member [3] at 2023-04-25 Fee: 0
+The book [1] was borrowed by member [1] at 2023-04-07
 You cannot read this book!
+The deadline of book [1] was extended by member [1] at 2023-04-14
+New deadline of book [1] is 2023-04-21
+You cannot extend the deadline!
+The book [1] was returned by member [1] at 2023-04-18 Fee: 0
 History of library:
 
 Number of the students: 2
@@ -189,35 +23,15 @@ Number of the academics: 2
 Academic[id:3]
 Academic[id:4]
 
-Number of printed books: 10
+Number of printed books: 3
 Printed[id:1]
 Printed[id:2]
-Printed[id:3]
-Printed[id:4]
 Printed[id:5]
-Printed[id:6]
-Printed[id:7]
-Printed[id:8]
-Printed[id:9]
-Printed[id:10]
 
-Number of handwritten books: 10
-Handwritten[id:11]
-Handwritten[id:12]
-Handwritten[id:13]
-Handwritten[id:14]
-Handwritten[id:15]
-Handwritten[id:16]
-Handwritten[id:17]
-Handwritten[id:18]
-Handwritten[id:19]
-Handwritten[id:20]
+Number of handwritten books: 2
+Handwritten[id:3]
+Handwritten[id:4]
 
-Number of borrowed books: 3
-The Book [1] was borrowed by member [1] at 2023-04-01
-The Book [4] was borrowed by member [3] at 2023-04-01
-The Book [5] was borrowed by member [3] at 2023-04-01
+Number of borrowed books: 0
 
-Number of books read in library: 2
-The Book [13] was read in library by member [4] at 2023-04-01
-The Book [9] was read in library by member [4] at 2023-04-01
+Number of books read in library: 0

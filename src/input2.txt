@@ -56,5 +56,8 @@ getTheHistory
 extendBook	6	3	2023-04-06
 extendBook	1	1	2023-04-09
 returnBook	6	3	2023-04-25
+returnBook	1	3	2023-04-25
+extendBook	10	4	2023-04-25
+extendBook	9	4	2023-04-25
 readInLibrary	9	3	2023-04-05
 getTheHistory
