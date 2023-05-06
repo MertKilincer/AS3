@@ -33,16 +33,17 @@ public class ExtendBook implements Command{
     @Override
     public void execute() {
         try {
-        Borrowable book = (Borrowable) this.getLibrary().getLibraryCollection().get(this.getBookId()-1);
-        if (book.getBorrowingUser().equals(this.getLibrary().getMembers().get(this.getMemberId()))){
-            book.extend(this.getLibrary());
+        Book book = getLibrary().getLibraryCollection().get(getBookId()-1);
+        if (book.getBorrowingUser().equals(getLibrary().getMembers().get(getMemberId()-1))&&
+                getCurrentTime().isBefore(((Borrowable)getLibrary().getLibraryCollection().get(getBookId()-1)).getDeadline())){
+            ((Borrowable) book).extend(getLibrary());
             this.getLibrary().updateOutput(String.format("New deadline of book [%s] is %s",
-                    this.getBookId(),book.getDeadline()));
+                    getBookId(),((Borrowable)book).getDeadline()));
         }else {
             throw new ExtendError();
         }
     }catch (ExtendError e){
-            this.getLibrary().updateOutput(e.getMessage());
+            getLibrary().updateOutput(e.getMessage());
         }
     }
 }

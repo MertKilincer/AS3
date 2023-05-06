@@ -37,10 +37,10 @@ public class ReadInLibrary implements Command{
         try {
         Book book = getLibrary().getLibraryCollection().get(getBookId()-1);
         if (book.getStatus().equals("Available")){
-        Member member = getLibrary().getMembers().get(getMemberId()-1);
-        member.readBook(book,getReadTime());
-        getLibrary().getReadInList().add(book);
-        getLibrary().updateOutput(String.format("The book [%s] was read in library by member [%s] at %s"
+            Member member = getLibrary().getMembers().get(getMemberId()-1);
+            member.readBook(book,getReadTime());
+            getLibrary().getReadInList().add(book);
+            getLibrary().updateOutput(String.format("The book [%s] was read in library by member [%s] at %s"
                 ,getBookId(),getMemberId(),getReadTime()));
         }else {
             throw new ReadError();

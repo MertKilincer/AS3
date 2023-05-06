@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 
 public class getHistory implements Command{
 
@@ -12,10 +12,11 @@ public class getHistory implements Command{
         this.library=library;
     }
 
+
     @Override
     public void execute() {
         this.getLibrary().updateOutput("History of library:\n"+
-                "Number of the students: " +getLibrary().getStudentList().size());
+                "\nNumber of the students: " +getLibrary().getStudentList().size());
         for (Member student: getLibrary().getStudentList()){
             getLibrary().updateOutput(student.info());
         }
@@ -32,13 +33,14 @@ public class getHistory implements Command{
             getLibrary().updateOutput(handwritten.info());
         }
         getLibrary().updateOutput("\nNumber of borrowed books: "+getLibrary().getBorrowedList().size());
-        for (Book borrowed: getLibrary().getBorrowedList()){
+        for (Book  borrowed: getLibrary().getBorrowedList()){
             Borrowable book= (Borrowable) borrowed;
             getLibrary().updateOutput(book.borrowInfo());
         }
         getLibrary().updateOutput("\nNumber of books read in library: "+getLibrary().getReadInList().size());
-        for (Book book: getLibrary().getReadInList()){
+        for (Book  book: getLibrary().getReadInList()){
             getLibrary().updateOutput(book.readInfo());
         }
     }
+
 }

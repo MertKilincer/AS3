@@ -11,9 +11,9 @@ public class Student extends Member{
     @Override
     public void readBook(Book book, LocalDate readTime) throws AccessError {
         try {
-            Printed printedBook = (Printed) book;
+            Printed printedBook = (Printed) book;//students do not have access the handwritten books
             printedBook.readIn(readTime);
-            book.setReader(this);
+            book.setBorrowingUser(this);
 
 
         }catch (ClassCastException e){

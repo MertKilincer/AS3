@@ -25,11 +25,12 @@ public class AddMember implements Command{
             setMember(new Student(getLibrary().getMembers().size()+1));
             getLibrary().getStudentList().add(getMember());
         }
+        getLibrary().getMembers().add(getMember());
     }
 
     @Override
     public void execute() {
-        getLibrary().getMembers().add(getMember());
+
         getLibrary().updateOutput("Created new member: "+getMember().info());
     }
 }

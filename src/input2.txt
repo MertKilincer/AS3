@@ -1,0 +1,60 @@
+addBook	P
+addBook	P
+addBook	P
+addBook	P
+addBook	P
+addBook	P
+addBook	P
+addBook	P
+addBook	P
+addBook	P
+addBook	H
+addBook	H
+addBook	H
+addBook	H
+addBook	H
+addBook	H
+addBook	H
+addBook	H
+addBook	H
+addBook	H
+addMember	S
+addMember	S
+addMember	A
+addMember	A
+borrowBook	1	1	2023-04-01
+borrowBook	2	1	2023-04-01
+borrowBook	3	1	2023-04-01
+borrowBook	3	2	2023-04-01
+returnBook	3	1	2023-04-09
+returnBook	3	2	2023-04-09
+returnBook	2	1	2023-04-05
+getTheHistory
+borrowBook	4	3	2023-04-01
+borrowBook	5	3	2023-04-01
+borrowBook	6	3	2023-04-01
+borrowBook	7	3	2023-04-01
+borrowBook	8	3	2023-04-01
+borrowBook	9	4	2023-04-01
+borrowBook	10	4	2023-04-01
+borrowBook	11	4	2023-04-01
+returnBook	7	3	2023-03-01
+returnBook	7	3	2023-04-10
+returnBook	8	3	2023-04-15
+returnBook	9	4	2023-04-25
+returnBook	10	4	2023-04-16
+getTheHistory
+readInLibrary	12	1	2023-04-01
+readInLibrary	13	4	2023-04-01
+readInLibrary	15	4	2023-04-01
+readInLibrary	8	4	2023-04-01
+readInLibrary	9	4	2023-04-01
+readInLibrary	18	1	2023-04-01
+returnBook	15	4	2023-04-01
+returnBook	8	4	2023-04-25
+getTheHistory
+extendBook	6	3	2023-04-06
+extendBook	1	1	2023-04-09
+returnBook	6	3	2023-04-25
+readInLibrary	9	3	2023-04-05
+getTheHistory

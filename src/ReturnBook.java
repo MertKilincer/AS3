@@ -37,8 +37,8 @@ public class ReturnBook implements Command{
             try{
                 Book book = getLibrary().getLibraryCollection().get(getBookId()-1);
                 Member member = getLibrary().getMembers().get(getMemberId()-1);
-                member.returnBook(book,getReturnTime());
                 if (!book.getStatus().equals("Available")) {
+                    member.returnBook(book,getReturnTime());
                     book.setStatus("Available");
                     if (member.getFee() > 0) {
                         getLibrary().updateOutput("You must pay a penalty!");
@@ -47,7 +47,7 @@ public class ReturnBook implements Command{
                     getLibrary().getReadInList().remove(book);
                     getLibrary().updateOutput(String.format("The book [%s] was returned by member [%s] at %s Fee: %s"
                             ,getBookId(), getMemberId(), getReturnTime(), member.getFee()));
-
+                    member.setFee(0);
                 }else {
                     throw new ReturnError();
                 }
@@ -56,7 +56,7 @@ public class ReturnBook implements Command{
             }
 
 
-        }catch (ReturnError e){
+        }catch (ReturnError |TimeTravelError e){
             getLibrary().updateOutput(e.getMessage());
         }
     }

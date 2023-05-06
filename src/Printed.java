@@ -1,10 +1,10 @@
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Printed extends Book implements Borrowable{
 
-    private LocalDate borrowTime = null;
+
     private LocalDate Deadline = null;
-    private Member borrowingUser;
 
     private boolean extendable = false;
 
@@ -15,12 +15,11 @@ public class Printed extends Book implements Borrowable{
     @Override
     public String readInfo() {
             return String.format("The Book [%s] was read in library by member [%s] at %s",
-                    super.getId(),super.reader.getId(),super.returnTime);
+                    super.getId(),super.getBorrowingUser().getId(),getBorrowTime());
     }
 
     public void setDeadline(LocalDate deadline) {
-        this.borrowTime=deadline;
-        if (borrowingUser instanceof Academic){
+        if (getBorrowingUser() instanceof Academic){
             this.Deadline=deadline.plusDays(Academic.timeLimit);
         }else{
             this.Deadline=deadline.plusDays(Student.timeLimit);
@@ -34,12 +33,10 @@ public class Printed extends Book implements Borrowable{
         return super.getReturnTime();
     }
 
-    public LocalDate getBorrowTime() {
-        return borrowTime;
-    }
-
-    public void setBorrowTime(LocalDate borrowTime) {
-        this.borrowTime = borrowTime;
+    @Override
+    public void resetTimes(){
+        super.resetTimes();
+        setBorrowTime(null);
     }
 
     public boolean getExtendable(){
@@ -48,13 +45,6 @@ public class Printed extends Book implements Borrowable{
     public void setExtendable(boolean extendable) {
         this.extendable = extendable;
     }
-    public void setBorrowingUser(Member borrowingUser) {
-        this.borrowingUser = borrowingUser;
-    }
-    public Member getBorrowingUser() {
-        return borrowingUser;
-    }
-
 
 
     public String info(){
@@ -65,10 +55,11 @@ public class Printed extends Book implements Borrowable{
     public void Borrow(Member member, LocalDate date) throws BorrowingError, BorrowExceedError {
         if (getStatus().equals("Available")){
             if (member.checkLimit()){
-            setStatus("borrowed");
-            setBorrowingUser(member);
-            setDeadline(date);
-            getBorrowingUser().increaseBorrowCount();
+                setStatus("borrowed");
+                setBorrowingUser(member);
+                setDeadline(date);
+                setBorrowTime(date);
+                getBorrowingUser().increaseBorrowCount();
         } else {
             throw new BorrowExceedError();
         }
@@ -82,19 +73,29 @@ public class Printed extends Book implements Borrowable{
                 getId(),getBorrowingUser().getId(),getBorrowTime());
     }
     @Override
-    public void Return(Member member,LocalDate date) throws ReturnError {
-        if (getStatus().equals("borrowed")&& getBorrowingUser().equals(member)){
-            setReturnTime(date);
-            getBorrowingUser().decreaseBorrowCount();
+    public void Return(Member member,LocalDate date) throws ReturnError, TimeTravelError {
+        if (!getStatus().equals("Available")  && getBorrowingUser().equals(member)){
+            if (date.isBefore(this.getBorrowTime())){
+                throw new TimeTravelError();
+            }else {
+                setReturnTime(date);
+            if (getStatus().equals("borrowed"))   {
+            if (getReturnTime().isAfter(getDeadline())) {
+                Period period = Period.between(getDeadline(), getReturnTime());
+                member.setFee(Math.abs(period.getDays()));
+                getBorrowingUser().decreaseBorrowCount();
+            }
+            } else {
+                member.setFee(0);
+                getBorrowingUser().decreaseBorrowCount();
+            }
             setBorrowingUser(null);
+        }
         }else {
             throw new ReturnError();
         }
     }
-    public void resetTimes(){
-        setReturnTime(null);
-        setBorrowTime(null);
-    }
+
 
     public void extend(Library library) throws ExtendError {
         if (!getExtendable()){
@@ -110,7 +111,7 @@ public class Printed extends Book implements Borrowable{
     public void readIn(LocalDate readDate){
         if (getStatus().equals("Available")){
             setStatus("Read In");
-            setReturnTime(readDate);
+            setBorrowTime(readDate);
         }
     }
 

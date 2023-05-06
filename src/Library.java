@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Library class is a container like class that holds books members in different type of array lists.
+ */
 public class Library {
 
     private LinkedList<Book> libraryCollection = new LinkedList<Book>();
@@ -14,6 +17,10 @@ public class Library {
     private ArrayList<Book> borrowedList =new ArrayList<Book>();
     private ArrayList<Book> readInList = new ArrayList<Book>();
 
+    /**
+     * This getter returns
+     * @return
+     */
     public LinkedList<Book> getLibraryCollection() {
         return libraryCollection;
     }

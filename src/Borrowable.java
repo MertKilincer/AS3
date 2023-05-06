@@ -7,17 +7,10 @@ public interface Borrowable {
 
     String borrowInfo();
 
-    LocalDate getReturnTime();
-
     LocalDate getDeadline();
-
-    Member getBorrowingUser();
 
     void setDeadline(LocalDate deadline);
 
-    void resetTimes();
-
-    void Return(Member member,LocalDate date) throws ReturnError;
 
     void extend(Library library) throws ExtendError;
 }

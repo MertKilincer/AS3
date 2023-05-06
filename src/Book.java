@@ -1,10 +1,13 @@
 import java.time.LocalDate;
 
-public abstract class Book {
+public abstract class Book implements  Returnable{
     private final int id;
     private String status="Available";
 
-    protected Member reader;
+
+
+    private LocalDate borrowTime = null;
+    private Member borrowingUser;
     protected LocalDate returnTime = null;
 
     public Book(int id){
@@ -21,20 +24,32 @@ public abstract class Book {
         this.status=status;
     }
 
-    public Member getReader() {
-        return reader;
+    @Override
+    public Member getBorrowingUser() {
+        return borrowingUser;
     }
 
-    public void setReader(Member reader) {
-        this.reader = reader;
+    @Override
+    public void setBorrowingUser(Member borrowingUser) {
+        this.borrowingUser = borrowingUser;
+    }
+    public LocalDate getBorrowTime() {
+        return borrowTime;
     }
 
+    public void setBorrowTime(LocalDate borrowTime) {
+        this.borrowTime = borrowTime;
+    }
     public LocalDate getReturnTime() {
         return returnTime;
     }
 
     public void setReturnTime(LocalDate returnTime) {
         this.returnTime = returnTime;
+    }
+
+    public void resetTimes(){
+        setReturnTime(null);
     }
 
     public abstract String readInfo();
