@@ -34,7 +34,7 @@ public class ExtendBook implements Command{
     public void execute() {
         try {
         Book book = getLibrary().getLibraryCollection().get(getBookId()-1);
-        if (book.getBorrowTime() == null){
+        if (!book.getStatus().equals("borrowed")){
             throw new ExtendError();
         }else {
 
