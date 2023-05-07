@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class getHistory implements Command{
 
@@ -15,6 +15,8 @@ public class getHistory implements Command{
 
     @Override
     public void execute() {
+        //Add the infos to the Library history and used for getHistory Command
+
         this.getLibrary().updateOutput("History of library:\n"+
                 "\nNumber of the students: " +getLibrary().getStudentList().size());
         for (Member student: getLibrary().getStudentList()){
@@ -44,3 +46,4 @@ public class getHistory implements Command{
     }
 
 }
+

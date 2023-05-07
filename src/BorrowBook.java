@@ -25,6 +25,13 @@ public class BorrowBook implements Command {
         return borrowTime;
     }
 
+    /**
+     * BorrowBook Command that system has.
+     * @param library working library
+     * @param bookId Id of th book  that user want to borrow
+     * @param memberId Id of the user
+     * @param borrowTime  Time of the borrowing operation
+     */
     public BorrowBook(Library library, String bookId, String memberId, String borrowTime) {
         this.library = library;
         this.bookId = Integer.parseInt(bookId);
@@ -41,7 +48,7 @@ public class BorrowBook implements Command {
                 if (book.getStatus().equals("Available")) {
                     Member member = getLibrary().getMembers().get(getMemberId() - 1);
                     member.borrowBook(book, getBorrowTime());
-                    getLibrary().getBorrowedList().add(book);
+                    getLibrary().getBorrowedList().add(book);//add book to specific borrowed book list
                     getLibrary().updateOutput(String.format("The book [%s] was borrowed by member [%s] at %s"
                             , getBookId(), getMemberId(), getBorrowTime()));
                 } else {

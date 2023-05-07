@@ -2,8 +2,6 @@ public class ErroneousCommand implements Command{
 
     private final Library library;
 
-
-
     ErroneousCommand(Library library){
         this.library=library;
     }

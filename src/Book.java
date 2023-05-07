@@ -1,14 +1,12 @@
 import java.time.LocalDate;
 
 public abstract class Book implements  Returnable{
-    private final int id;
-    private String status="Available";
+    private final int id;//book's Id
+    private String status="Available";//book status and every book have initial status as Available
 
-
-
-    private LocalDate borrowTime = null;
-    private Member borrowingUser;
-    protected LocalDate returnTime = null;
+    private LocalDate borrowTime = null;//borrow time of the book for borrowing and read in the library operations
+    private Member borrowingUser;//borrowing user for library operations
+    private LocalDate returnTime = null;//time that the book returned
 
     public Book(int id){
         this.id=id;

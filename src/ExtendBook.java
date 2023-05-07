@@ -5,7 +5,7 @@ public class ExtendBook implements Command{
     private final int bookId;
     private final int memberId;
     private final Library library;
-    private final LocalDate currentTime;//check conditions
+    private final LocalDate currentTime;//it is for checking possibility of extending deadline
 
     public int getBookId() {
         return bookId;
@@ -23,6 +23,13 @@ public class ExtendBook implements Command{
         return currentTime;
     }
 
+    /**
+     *
+     * @param library working library
+     * @param bookId id of the book that borrowed
+     * @param memberId borrowing user id
+     * @param currentDate extend request date
+     */
     public ExtendBook(Library library, String bookId, String memberId, String currentDate){
         this.library=library;
         this.bookId= Integer.parseInt(bookId);

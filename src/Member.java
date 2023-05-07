@@ -1,9 +1,9 @@
 import java.time.LocalDate;
 
 public abstract class Member {
-    private final int id;
-    private int borrowCount;
-    protected int fee;
+    private final int id;//member Id
+    private int borrowCount;//borrow count of the members
+    private int fee;//if member pays a fee it is stored here temporarily
 
     public Member(int id){
         this.id=id;
@@ -31,6 +31,10 @@ public abstract class Member {
         this.fee=fee;
     }
 
+    /**
+     * Check member can have right to borrow books
+     * @return true for they can still borrow books false for they can not have borrow books
+     */
     public boolean checkLimit(){
         if (this instanceof Academic && this.getBorrowCount() <4){
             return true;
@@ -42,7 +46,7 @@ public abstract class Member {
     }
 
     public void returnBook(Book book, LocalDate returnTime) throws ReturnError, TimeTravelError {
-        book.Return(this,returnTime);
+        book.returnToLibrary(this,returnTime);
         book.resetTimes();
     }
 

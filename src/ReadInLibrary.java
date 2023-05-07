@@ -23,6 +23,13 @@ public class ReadInLibrary implements Command{
         return bookId;
     }
 
+    /**
+     *
+     * @param library working library
+     * @param bookId id of the  book returned
+     * @param memberId member Id that holds the book
+     * @param readTime readTime of the book
+     */
     public ReadInLibrary(Library library, String bookId, String memberId, String readTime){
         this.library=library;
         this.bookId= Integer.parseInt(bookId);
@@ -39,7 +46,7 @@ public class ReadInLibrary implements Command{
         if (book.getStatus().equals("Available")){
             Member member = getLibrary().getMembers().get(getMemberId()-1);
             member.readBook(book,getReadTime());
-            getLibrary().getReadInList().add(book);
+            getLibrary().getReadInList().add(book);//add book to specific read In list
             getLibrary().updateOutput(String.format("The book [%s] was read in library by member [%s] at %s"
                 ,getBookId(),getMemberId(),getReadTime()));
         }else {
